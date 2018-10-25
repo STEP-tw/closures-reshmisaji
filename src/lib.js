@@ -50,26 +50,44 @@ const makeDeltaTracker = function(deltaArg){
 }
 
 /*.....................Make fibonacci generator.........................*/
+//
+//const makeFiboGenerator = function(arg1,arg2){
+//  let startValue = 0;
+//  let startValueParameter = arg1;
+//
+//  const generateFibonacci = function(nextValue){ 
+//    return function(){let returnValue = startValue;nextValue = startValue+nextValue;startValue = nextValue - startValue;return returnValue;};
+//  }
+//
+//  switch(arg1){
+//    case 2:return generateFibonacci(arg1);
+//      break;
+//    default : return generateFibonacci(1);
+//      break;
+//  }
+//   
+//  const doubleArgumentFibonacci = function(nextValue){ 
+//    return function(){let returnValue = startValueParameter;nextValue = startValueParameter+nextValue;startValueParameter = nextValue - startValueParameter;return returnValue;};
+//  }
+//
+//  return doubleArgumentFibonacci(arg2);
+//}
+//
 
-const makeFiboGenerator = function(arg1,arg2){
-  let startValue = 0;
-  let nextValue = 1;
-
-  const generateFibonacci = function(start,nextValue){ 
-    return function(){returnVAlue = startValue;nextValue = startValue+nextValue;startValue = nextValue - startValue;return returnVAlue;};
-  }
-
-  switch(arg1){
-    case 2:return generateFibonacci(0,2);
-      break;
-    default : return generateFibonacci(0,1);
-      break;
-  }
-  return generateFibonacci(0,1);
+const makeFiboGenerator = undefined;
+/*..............................make cycler.................................*/
+ let index = 0;
+const makeCycler = function(collection){
+ 
+ const toggle = function(){ 
+   if(index>=collection.length){index = 0;}
+  let returnValue = collection[index];
+   index++;
+   return returnValue;
+ }
+ return toggle; 
 }
 
-
-const makeCycler = undefined;
 const curry = undefined;
 const compose = undefined;
 

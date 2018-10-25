@@ -76,9 +76,10 @@ const makeDeltaTracker = function(deltaArg){
 
 const makeFiboGenerator = undefined;
 /*..............................make cycler.................................*/
- let index = 0;
 const makeCycler = function(collection){
- 
+ let index = 0;
+  let length = collection.length;
+  if(length!=collection.length){index=0;}
  const toggle = function(){ 
    if(index>=collection.length){index = 0;}
   let returnValue = collection[index];

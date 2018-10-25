@@ -97,7 +97,10 @@ const curry = function(functionREference,parameter){
   return function(firstArgument,secondArgument){return functionREference(parameter,firstArgument,secondArgument)} ;
 }
 
-const compose = undefined;
+const compose = function(functionReference1,functionReference2){
+  return function(argument1,argument2){
+    return functionReference1(functionReference2(argument1,argument2))};
+}
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;

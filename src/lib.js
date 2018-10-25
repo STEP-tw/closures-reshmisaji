@@ -65,31 +65,31 @@ const compose = function(functionReference1,functionReference2){
 
 
 /*.....................Make fibonacci generator.........................*/
-//
-//const makeFiboGenerator = function(arg1,arg2){
-//  let startValue = 0;
-//  let startValueParameter = arg1;
-//
-//  const generateFibonacci = function(nextValue){ 
-//    return function(){let returnValue = startValue;nextValue = startValue+nextValue;startValue = nextValue - startValue;return returnValue;};
-//  }
-//
-//  switch(arg1){
-//    case 2:return generateFibonacci(arg1);
-//      break;
-//    default : return generateFibonacci(1);
-//      break;
-//  }
-//   
-//  const doubleArgumentFibonacci = function(nextValue){ 
-//    return function(){let returnValue = startValueParameter;nextValue = startValueParameter+nextValue;startValueParameter = nextValue - startValueParameter;return returnValue;};
-//  }
-//
-//  return doubleArgumentFibonacci(arg2);
-//}
-//
 
-const makeFiboGenerator = undefined;
+const makeFiboGenerator = function(arg1,arg2){
+  let startValue = 0;
+  let startValueParameter = arg1;
+
+  const generateFibonacci = function(nextValue){ 
+    return function(){let returnValue = startValue;nextValue = startValue+nextValue;startValue = nextValue - startValue;return returnValue;};
+  }
+
+  switch(arg1){
+    case 2:return generateFibonacci(arg1);
+      break;
+    default : return generateFibonacci(1);
+      break;
+  }
+   
+  const doubleArgumentFibonacci = function(nextValue){ 
+    return function(){let returnValue = startValueParameter;nextValue = startValueParameter+nextValue;startValueParameter = nextValue - startValueParameter;return returnValue;};
+  }
+
+  return doubleArgumentFibonacci(arg2);
+}
+
+
+//const makeFiboGenerator = undefined;
 ///*..............................make cycler.................................*/
 
 const makeCycler = function(collection){
@@ -105,7 +105,6 @@ const makeCycler = function(collection){
    return returnValue;
  }
 }
-
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;

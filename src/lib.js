@@ -1,7 +1,18 @@
 const makeConstant = function(parameter){
   return function(){return parameter;};
 }
-const makeCounterFromN = undefined;
+  let value = 1;
+const makeCounterFromN = function(parameter){
+  const counter = function(){
+    return function(){return value++;};
+  }
+  switch(parameter){
+    case 1:return counter();
+           break; 
+    case 2:return function(){ return parameter;};
+           break;
+  }
+}
 const makeCounterFromZero = undefined;
 const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;

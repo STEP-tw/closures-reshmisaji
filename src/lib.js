@@ -8,25 +8,21 @@ const makeConstant = function(parameter){
 
 const makeCounterFromN = function(parameter){
   let counter1 = parameter;
-  let counter2 = 1;
-  let counter3 = 2;
+  let counter2 = parameter;
+  let counter3 = parameter;
   let counter4 = parameter;
 
-  const counter = function(){
-    return function(){return counter1 ++;};
-  }
-  
   switch(parameter){
     case -1:return function(){return counter4++;};
             break
    
-    case 1 :return counter();
+    case 1 :return function(){return counter1 ++;}; 
             break; 
     
-    case 2 :return function(){ return ++counter2;};
+    case 2 :return function(){ return counter2 ++;};
             break;
     
-    case 3 :return function(){ return ++counter3;};
+    case 3 :return function(){ return counter3 ++;};
             break;
   }
 }
@@ -51,10 +47,28 @@ const makeDeltaTracker = function(deltaArg){
     }
     return deltaValue;
   }
-  
 }
 
-const makeFiboGenerator = undefined;
+/*.....................Make fibonacci generator.........................*/
+
+const makeFiboGenerator = function(arg1,arg2){
+  let startValue = 0;
+  let nextValue = 1;
+
+  const generateFibonacci = function(start,nextValue){ 
+    return function(){returnVAlue = startValue;nextValue = startValue+nextValue;startValue = nextValue - startValue;return returnVAlue;};
+  }
+
+  switch(arg1){
+    case 2:return generateFibonacci(0,2);
+      break;
+    default : return generateFibonacci(0,1);
+      break;
+  }
+  return generateFibonacci(0,1);
+}
+
+
 const makeCycler = undefined;
 const curry = undefined;
 const compose = undefined;

@@ -49,6 +49,21 @@ const makeDeltaTracker = function(deltaArg){
   }
 }
 
+/*..............................curry maker.............................*/
+
+const curry = function(functionREference,parameter){
+
+  return function(firstArgument,secondArgument){return functionREference(parameter,firstArgument,secondArgument)} ;
+}
+
+/*............................compose....................................*/
+
+const compose = function(functionReference1,functionReference2){
+  return function(argument1,argument2){
+    return functionReference1(functionReference2(argument1,argument2))};
+}
+
+
 /*.....................Make fibonacci generator.........................*/
 //
 //const makeFiboGenerator = function(arg1,arg2){
@@ -76,31 +91,21 @@ const makeDeltaTracker = function(deltaArg){
 
 const makeFiboGenerator = undefined;
 ///*..............................make cycler.................................*/
-//const makeCycler = function(collection){
-// let index = 0;
-//  let length = collection.length;
-//  if(length!=collection.length){index=0;}
-// const toggle = function(){ 
-//   if(index>=length){index = 0;}
-//  let returnValue = collection[index];
-//   index++;
-//   return returnValue;
-// }
-// return toggle; 
-//}
-const makeCycler = undefined;
 
-/*..............................curry maker....................................*/
-
-const curry = function(functionREference,parameter){
-
-  return function(firstArgument,secondArgument){return functionREference(parameter,firstArgument,secondArgument)} ;
+const makeCycler = function(collection){
+ let index = 0;
+ let set = collection.slice();
+ let length = set.length;
+ return function(){ 
+   if(index>=length){
+   index = 0;
+   }
+  let returnValue = set[index];
+   index++;
+   return returnValue;
+ }
 }
 
-const compose = function(functionReference1,functionReference2){
-  return function(argument1,argument2){
-    return functionReference1(functionReference2(argument1,argument2))};
-}
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;

@@ -11,16 +11,21 @@ const makeCounterFromN = function(parameter){
   let counter2 = 1;
   let counter3 = 2;
   let counter4 = parameter;
+
   const counter = function(){
     return function(){return counter1 ++;};
   }
+  
   switch(parameter){
     case -1:return function(){return counter4++;};
             break
+   
     case 1 :return counter();
             break; 
+    
     case 2 :return function(){ return ++counter2;};
             break;
+    
     case 3 :return function(){ return ++counter3;};
             break;
   }
@@ -34,7 +39,21 @@ const makeCounterFromZero = function(){
   return function(){ return counter++;};
 }
 
-const makeDeltaTracker = undefined;
+/*........................Make delta tracker............................*/
+
+const makeDeltaTracker = function(deltaArg){
+  let deltaValue = {old : deltaArg, delta : 0, new : deltaArg};
+  return function(passedDelta){
+    if(passedDelta){
+      deltaValue.old = deltaValue.new;
+      deltaValue.delta = passedDelta;
+      deltaValue.new = deltaValue.new + passedDelta;
+    }
+    return deltaValue;
+  }
+  
+}
+
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
 const curry = undefined;

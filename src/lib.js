@@ -68,7 +68,6 @@ const compose = function(functionReference1,functionReference2){
 
 const makeFiboGenerator = function(arg1,arg2){
   let startValue = 0;
-  let startValueParameter = arg1;
 
   const generateFibonacci = function(nextValue){ 
     return function(){let returnValue = startValue;nextValue = startValue+nextValue;startValue = nextValue - startValue;return returnValue;};
@@ -81,11 +80,6 @@ const makeFiboGenerator = function(arg1,arg2){
       break;
   }
    
-  const doubleArgumentFibonacci = function(nextValue){ 
-    return function(){let returnValue = startValueParameter;nextValue = startValueParameter+nextValue;startValueParameter = nextValue - startValueParameter;return returnValue;};
-  }
-
-  return doubleArgumentFibonacci(arg2);
 }
 
 

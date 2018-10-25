@@ -66,25 +66,30 @@ const compose = function(functionReference1,functionReference2){
 
 /*.....................Make fibonacci generator.........................*/
 
-const makeFiboGenerator = function(arg1,arg2){
+const makeFiboGenerator = function(start,next){
   let startValue = 0;
-
-  const generateFibonacci = function(nextValue){ 
-    return function(){let returnValue = startValue;nextValue = startValue+nextValue;startValue = nextValue - startValue;return returnValue;};
-  }
-
-  switch(arg1){
-    case 2:return generateFibonacci(arg1);
-      break;
-    default : return generateFibonacci(1);
-      break;
-  }
+  let nextValue = 1;
    
+  if((start!=undefined) && (next == undefined)){
+    nextValue = start;
+  }
+  if(next!=undefined){
+    startValue = start;
+    nextValue = next;
+  }
+  const generateFibonacci = function(){
+    return function(){
+      let returnValue = startValue;
+      nextValue = startValue + nextValue;
+      startValue = nextValue - startValue;
+      return returnValue;
+    };
+  }
+  return generateFibonacci();
 }
 
 
-//const makeFiboGenerator = undefined;
-///*..............................make cycler.................................*/
+/*..............................make cycler.................................*/
 
 const makeCycler = function(collection){
  let index = 0;

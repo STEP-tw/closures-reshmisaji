@@ -1,29 +1,16 @@
 /*.......................Make Constant........................*/
 
 const makeConstant = function(parameter){
-  return function(){return parameter;};
+  return function(){
+    return parameter;
+  };
 }
 
 /*....................... Make Counter from number....................*/
 
-const makeCounterFromN = function(parameter){
-  let counter1 = parameter;
-  let counter2 = parameter;
-  let counter3 = parameter;
-  let counter4 = parameter;
-
-  switch(parameter){
-    case -1:return function(){return counter4++;};
-            break
-   
-    case 1 :return function(){return counter1 ++;}; 
-            break; 
-    
-    case 2 :return function(){ return counter2 ++;};
-            break;
-    
-    case 3 :return function(){ return counter3 ++;};
-            break;
+const makeCounterFromN = function(count){
+  return function(){
+    return count++;
   }
 }
 

@@ -1,14 +1,16 @@
 /*.......................Make Constant........................*/
+
 const makeConstant = function(parameter){
   return function(){return parameter;};
 }
 
 /*....................... Make Counter from number....................*/
-  let counter1 = 1;
+
 const makeCounterFromN = function(parameter){
+  let counter1 = parameter;
   let counter2 = 1;
   let counter3 = 2;
-  let counter4 = -1;
+  let counter4 = parameter;
   const counter = function(){
     return function(){return counter1 ++;};
   }
@@ -26,7 +28,12 @@ const makeCounterFromN = function(parameter){
 
 /*....................... Make Counter from zero........................*/
 
-const makeCounterFromZero = undefined;
+const makeCounterFromZero = function(){
+  let counter = 0;
+
+  return function(){ return counter++;};
+}
+
 const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;

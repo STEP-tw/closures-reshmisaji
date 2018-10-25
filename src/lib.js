@@ -1,19 +1,19 @@
 const makeConstant = function(parameter){
   return function(){return parameter;};
 }
-  let value1 = 1;
+  let counter1 = 1;
 const makeCounterFromN = function(parameter){
-  let value2 = 1;
-  let value3 = 2;
+  let counter2 = 1;
+  let counter3 = 2;
   const counter = function(){
-    return function(){return value1 ++;};
+    return function(){return counter1 ++;};
   }
   switch(parameter){
     case 1:return counter();
            break; 
-    case 2:return function(){ return ++value2;};
+    case 2:return function(){ return ++counter2;};
            break;
-    case 3:return function(){ return ++value3;};
+    case 3:return function(){ return ++counter3;};
            break;
   }
 }

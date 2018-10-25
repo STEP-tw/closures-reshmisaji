@@ -1,22 +1,31 @@
+/*.......................Make Constant........................*/
 const makeConstant = function(parameter){
   return function(){return parameter;};
 }
+
+/*....................... Make Counter from number....................*/
   let counter1 = 1;
 const makeCounterFromN = function(parameter){
   let counter2 = 1;
   let counter3 = 2;
+  let counter4 = -1;
   const counter = function(){
     return function(){return counter1 ++;};
   }
   switch(parameter){
-    case 1:return counter();
-           break; 
-    case 2:return function(){ return ++counter2;};
-           break;
-    case 3:return function(){ return ++counter3;};
-           break;
+    case -1:return function(){return counter4++;};
+            break
+    case 1 :return counter();
+            break; 
+    case 2 :return function(){ return ++counter2;};
+            break;
+    case 3 :return function(){ return ++counter3;};
+            break;
   }
 }
+
+/*....................... Make Counter from zero........................*/
+
 const makeCounterFromZero = undefined;
 const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;

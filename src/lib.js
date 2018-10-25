@@ -17,9 +17,7 @@ const makeCounterFromN = function(count){
 /*....................... Make Counter from zero........................*/
 
 const makeCounterFromZero = function(){
-  let counter = 0;
-
-  return function(){ return counter++;};
+  return makeCounterFromN(0);
 }
 
 /*........................Make delta tracker............................*/

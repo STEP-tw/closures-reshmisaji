@@ -23,14 +23,17 @@ const makeCounterFromZero = function(){
 /*........................Make delta tracker............................*/
 
 const makeDeltaTracker = function(deltaArg){
-  let deltaValue = {old : deltaArg, delta : 0, new : deltaArg};
-  return function(passedDelta){
-    if(passedDelta){
-      deltaValue.old = deltaValue.new;
-      deltaValue.delta = passedDelta;
-      deltaValue.new = deltaValue.new + passedDelta;
+  let returnObject = {};
+  let deltaState = {old: deltaArg, delta: 0,new: deltaArg};
+
+  return function(passData){
+    if(passData!= undefined){
+      deltaState.old = deltaState.new;
+      deltaState.delta = passData;
     }
-    return deltaValue;
+    deltaState.new=deltaState.old + deltaState.delta;
+    Object.assign(returnObject,deltaState);
+    return returnObject;
   }
 }
 
@@ -38,7 +41,9 @@ const makeDeltaTracker = function(deltaArg){
 
 const curry = function(functionREference,parameter){
 
-  return function(firstArgument,secondArgument){return functionREference(parameter,firstArgument,secondArgument)} ;
+  return function(firstArgument,secondArgument){
+    return functionREference(parameter,firstArgument,secondArgument)
+  };
 }
 
 /*............................compose....................................*/
@@ -81,12 +86,7 @@ const makeCycler = function(collection){
  let set = collection.slice();
  let length = set.length;
  return function(){ 
-   if(index>=length){
-   index = 0;
-   }
-  let returnValue = set[index];
-   index++;
-   return returnValue;
+   return set[index++ % length];
  }
 }
 

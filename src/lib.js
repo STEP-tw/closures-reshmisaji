@@ -23,10 +23,10 @@ const makeCounterFromZero = function(){
 /*........................Make delta tracker............................*/
 
 const makeDeltaTracker = function(deltaArg){
-  let returnObject = {};
   let deltaState = {old: deltaArg, delta: 0,new: deltaArg};
 
   return function(passData){
+    let returnObject = {};
     if(passData!= undefined){
       deltaState.old = deltaState.new;
       deltaState.delta = passData;
